@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/api";
 import { useState } from "react";
 import Image from "@/components/next/Image";
 import Link from "@/components/next/Link";
@@ -67,7 +68,7 @@ export function InKindSupportPage() {
         setPending(true);
         setError("");
         try {
-            const response = await fetch("/api/leads", {
+            const response = await fetch(apiUrl("/api/leads"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

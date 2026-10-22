@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { api } from "@/lib/api";
+import { api, apiCredentials, apiUrl } from "@/lib/api";
 
 export const fieldClass =
   "mt-1.5 h-11 w-full rounded-xl border border-[#e4dfd4] bg-[#fffcf7] px-3 text-sm text-[#232222] outline-none transition focus:border-[#80b230] focus:bg-white focus:ring-2 focus:ring-[#80b230]/30";
@@ -136,7 +136,7 @@ export function ImageField({ value, onChange }) {
     setError("");
     setPending(true);
     try {
-      const response = await fetch("/api/admin/uploads", { method: "POST", body, credentials: "same-origin" });
+      const response = await fetch(apiUrl("/api/admin/uploads"), { method: "POST", body, credentials: apiCredentials });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Upload failed.");
       onChange(data.url);

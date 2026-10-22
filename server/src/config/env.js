@@ -37,6 +37,9 @@ export const env = Object.freeze({
   port: Number(process.env.PORT) || 3000,
   mongoUri: process.env.MONGO_URI || "",
   trustProxy: process.env.TRUST_PROXY === "true",
+  corsOrigins: (process.env.CORS_ORIGINS || "").split(",").map((value) => value.trim().replace(/\/$/, "")).filter(Boolean),
+  cookieSameSite: process.env.COOKIE_SAMESITE || "lax",
+  cookieDomain: process.env.COOKIE_DOMAIN || undefined,
   cookieSecure: process.env.COOKIE_SECURE ? process.env.COOKIE_SECURE === "true" : isProduction,
   logLevel: process.env.LOG_LEVEL || (nodeEnv === "test" ? "silent" : "info"),
   admin: {

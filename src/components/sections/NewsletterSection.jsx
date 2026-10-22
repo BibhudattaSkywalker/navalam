@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/api";
 import { useState } from "react";
 export function NewsletterSection() {
     const [submitted, setSubmitted] = useState(false);
@@ -17,7 +18,7 @@ export function NewsletterSection() {
             event.preventDefault();
             const form = new FormData(event.currentTarget);
             try {
-              const response = await fetch("/api/leads", {
+              const response = await fetch(apiUrl("/api/leads"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ source: "newsletter", name: form.get("name"), email: form.get("email") }),

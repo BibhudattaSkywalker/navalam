@@ -7,6 +7,7 @@ import { connectDatabase } from "./config/database.js";
 import { env } from "./config/env.js";
 import { asyncHandler } from "./core/asyncHandler.js";
 import { apiNotFound, errorHandler } from "./middleware/errorHandler.js";
+import { cors } from "./middleware/cors.js";
 import { requestLogger } from "./middleware/requestLogger.js";
 import { webhook } from "./modules/donations/payment.controller.js";
 import { buildApiRouter } from "./routes/index.js";
@@ -16,6 +17,7 @@ export function createApp() {
   const app = express();
   if (env.trustProxy) app.set("trust proxy", 1);
 
+  app.use("/api", cors);
   app.use("/api", requestLogger);
   app.use("/api", helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
 

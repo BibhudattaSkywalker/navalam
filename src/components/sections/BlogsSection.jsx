@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/api";
 import { useEffect, useState } from "react";
 import Image from "@/components/next/Image";
 import { Pager } from "@/components/ui/Pager";
@@ -17,7 +18,7 @@ export function BlogsSection() {
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState(null);
   useEffect(() => {
-    fetch(`/api/posts?page=${page}&limit=4`)
+    fetch(apiUrl(`/api/posts?page=${page}&limit=4`))
       .then((response) => response.json())
       .then((data) => {
         if (!data.posts?.length) return;

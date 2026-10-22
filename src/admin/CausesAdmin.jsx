@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { api, inr } from "@/lib/api";
+import { api, apiCredentials, apiUrl, inr } from "@/lib/api";
 import { BackLink, EmptyState, ErrorNote, FilterPills, FormCard, ImageField, LoadingBlock, PageTitle, Pagination, Panel, PrimaryLink, SaveButton, SearchField, StatusPill, fieldClass, tableHead, tdClass, thClass, usePagedList } from "@/admin/ui";
 
 export function CausesAdmin() {
@@ -130,7 +130,7 @@ export function CauseEditor() {
             if (!file) return;
             const body = new FormData();
             body.append("file", file);
-            const response = await fetch("/api/admin/uploads", { method: "POST", body, credentials: "same-origin" });
+            const response = await fetch(apiUrl("/api/admin/uploads"), { method: "POST", body, credentials: apiCredentials });
             const data = await response.json();
             if (response.ok) set("gallery", [...(form.gallery || []), data.url]);
           }} />

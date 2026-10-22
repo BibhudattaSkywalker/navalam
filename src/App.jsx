@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SitePage } from "@/components/layout/SitePage";
 import { Footer } from "@/components/sections/Footer";
@@ -267,6 +267,10 @@ export default function App() {
 
   if (pathname.startsWith("/admin")) {
     return <AdminApp />;
+  }
+  // On admin.<domain> the whole site is the admin panel, so send the bare root to it.
+  if (window.location.hostname.startsWith("admin.")) {
+    return <Navigate to="/admin" replace />;
   }
 
   return (

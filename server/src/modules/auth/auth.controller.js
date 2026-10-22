@@ -6,8 +6,9 @@ import { login, logout } from "./auth.service.js";
 
 const cookieOptions = {
   httpOnly: true,
-  sameSite: "lax",
+  sameSite: env.cookieSameSite,
   secure: env.cookieSecure,
+  domain: env.cookieDomain,
   path: "/",
 };
 

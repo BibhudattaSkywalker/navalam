@@ -1,6 +1,16 @@
+// Empty in dev and when the API is served from the same origin. Set VITE_API_URL at build time
+// (e.g. https://api.example.org) when the frontend is hosted separately.
+const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
+export function apiUrl(path) {
+  return `${API_BASE}${path}`;
+}
+
+export const apiCredentials = API_BASE ? "include" : "same-origin";
+
 export async function api(path, options = {}) {
-  const response = await fetch(path, {
-    credentials: "same-origin",
+  const response = await fetch(apiUrl(path), {
+    credentials: apiCredentials,
     headers: {
       ...(options.body && !(options.body instanceof FormData) ? { "Content-Type": "application/json" } : {}),
       ...(options.headers || {}),

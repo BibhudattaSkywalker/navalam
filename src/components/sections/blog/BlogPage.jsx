@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/api";
 import { useEffect, useRef, useState } from "react";
 import { Pager } from "@/components/ui/Pager";
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
@@ -74,7 +75,7 @@ export function BlogPage() {
     const [pagination, setPagination] = useState(null);
     const listTop = useRef(null);
     useEffect(() => {
-        fetch(`/api/posts?page=${page}&limit=${pageSize}`)
+        fetch(apiUrl(`/api/posts?page=${page}&limit=${pageSize}`))
             .then((response) => response.json())
             .then((data) => {
                 if (!data.posts?.length) return;

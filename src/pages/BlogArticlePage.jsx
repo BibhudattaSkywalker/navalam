@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Image from "@/components/next/Image";
@@ -14,7 +15,7 @@ export default function BlogArticlePage() {
   const [missing, setMissing] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/posts/${slug}`)
+    fetch(apiUrl(`/api/posts/${slug}`))
       .then((response) => {
         if (!response.ok) throw new Error("missing");
         return response.json();

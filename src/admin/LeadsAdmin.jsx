@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { api, formatDate } from "@/lib/api";
+import { api, apiUrl, formatDate } from "@/lib/api";
 import { BackLink, EmptyState, ErrorNote, FilterPills, FormCard, LoadingBlock, PageTitle, Pagination, Panel, SearchField, StatusPill, fieldClass, tableHead, tdClass, thClass, usePagedList } from "@/admin/ui";
 
 export function LeadsAdmin() {
@@ -13,7 +13,7 @@ export function LeadsAdmin() {
 
   return (
     <div>
-      <PageTitle eyebrow="Enquiries" title="Leads" description="Every form on the site lands here with its source, contact details, and status." action={<a href="/api/admin/leads/export" className="inline-flex h-11 items-center rounded-full border border-[#e4dfd4] bg-white px-5 text-sm">Export CSV</a>} />
+      <PageTitle eyebrow="Enquiries" title="Leads" description="Every form on the site lands here with its source, contact details, and status." action={<a href={apiUrl("/api/admin/leads/export")} className="inline-flex h-11 items-center rounded-full border border-[#e4dfd4] bg-white px-5 text-sm">Export CSV</a>} />
       <div className="mt-5 flex flex-col gap-3">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <SearchField value={query} onChange={setQuery} placeholder="Search name, email, phone" />

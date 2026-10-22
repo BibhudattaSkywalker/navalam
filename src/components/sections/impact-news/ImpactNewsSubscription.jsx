@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/api";
 import { useState } from "react";
 import Image from "@/components/next/Image";
 export function ImpactNewsSubscription() {
@@ -8,7 +9,7 @@ export function ImpactNewsSubscription() {
         if (!email.trim())
             return;
         try {
-            const response = await fetch("/api/leads", {
+            const response = await fetch(apiUrl("/api/leads"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ source: "impact-news", email: email.trim(), name: "Newsletter subscriber" }),

@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { fileURLToPath } from "url";
-import { app as api, ready } from "./server/app.js";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
@@ -14,6 +13,8 @@ export default defineConfig({
     {
       name: "nalvalam-api",
       async configureServer(server) {
+        // Loaded only for `vite dev`, so `vite build` never opens a database connection.
+        const { app: api, ready } = await import("./server/app.js");
         await ready;
         server.middlewares.use(api);
       },
