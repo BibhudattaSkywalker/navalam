@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# vite
+/dist
+
 # production
 /build
 
@@ -32,6 +35,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# local database and uploads
+/data
+/public/uploads
 
 # vercel
 .vercel
@@ -39,3 +47,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local data and docs
+/data
+/Navalam-Backend-Requirements.pdf
+.claude/

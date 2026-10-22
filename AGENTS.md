@@ -1,5 +1,1 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+This project is a React + Vite app written in JavaScript, styled with Tailwind CSS v4, and routed with React Router. Source lives in `src`. The `@` alias points at `src`.

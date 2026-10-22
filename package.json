@@ -2,25 +2,45 @@
   "name": "balaji-website",
   "version": "0.1.0",
   "private": true,
+  "description": "Nalvalam Foundation website with its admin panel and REST API.",
+  "author": "Bibhudatta Satapathy",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "vite",
+    "build": "vite build",
+    "start": "node server/start.js",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "node --test --test-concurrency=1 \"server/tests/*.test.js\"",
+    "seed": "node server/scripts/seed.js"
   },
   "dependencies": {
-    "next": "16.2.10",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
+    "mongoose": "^9.11.2",
+    "multer": "^2.4.0",
+    "razorpay": "^2.9.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.7.0",
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.10",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@eslint/js": "^9.36.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "mongodb-memory-server": "^11.3.0",
+    "tailwindcss": "^4.1.14",
+    "vite": "^7.1.9"
   }
 }
